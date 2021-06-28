@@ -6,8 +6,8 @@
 		</div>
 		<img class="produit__image" :src="img" :alt="'icon of '+name"/>
 		<nav class="produit__action">
-			<button class="produit__action__buy">Acheter</button>
-			<button class="produit__action__see">Voir</button>
+			<button class="produit__action__buy">Ajouter au panier</button>
+			<button class="produit__action__see">Voir le produit</button>
 		</nav>
 	</a>
 </template>
@@ -20,6 +20,8 @@ export default {
 </script>
 
 <style lang="scss">
+	$actionCover:100%;
+
 	.produit {
 		max-width: 200px;
 		border-radius: 1em;
@@ -54,8 +56,9 @@ export default {
 
 		&__action {
 			width:100%;
-			height:70%;
-			transform:translateY(-150%)
+			display: block;
+			margin-top:auto;
+			cursor:default;
 			button {
 				background-color: red;
 				color:white;
@@ -66,18 +69,11 @@ export default {
 				cursor:pointer;
 				transition: background .5s, color .5s;
 				margin:2px;
+
 				&:hover {
 					background:white;
 					color:red;
 				}
-			}
-		}
-
-		$parent: &;
-
-		&:hover {
-			#{$parent}__action {
-				transform:translateY(0);
 			}
 		}
 	}
