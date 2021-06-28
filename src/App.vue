@@ -5,18 +5,16 @@
 		<img src="@/assets/cart.png"/>
 	</header>
 
-	<section class="produitContener">
-		<Produit v-for="(produit,index) in produits" :key="index" :name="produit.name" :img="produit.img" :price="produit.price"/>
-	</section>
+	<router-view/>
+	
 </template>
 
 <script>
-import Produit from "./components/produit.vue"
 
 export default {
 	name: 'App',
 	components: {
-		Produit
+		
 	},
 	data() {return {
 			produits : [
@@ -53,6 +51,7 @@ export default {
 			]
 		}
 	}
+
 }
 </script>
 
@@ -63,12 +62,6 @@ body {
 	padding:0;
 }
 #app {
-	.produitContener {
-		display:flex;
-		flex-wrap: wrap;
-		margin-left: clamp(25px,25vw,300px);
-		margin-right: clamp(25px,25vw,300px);
-	}
 
 	header {
 		background:rgb(48, 44, 44);

@@ -1,5 +1,5 @@
 <template>
-	<a class="produit" :href="'/'+name">
+	<router-link class="produit" :href="'/'+name">
 		<div class="produit__header">
 			<h2 class="produit__header__name">{{name}}</h2>
 			<p class="produit__header__price">{{price}} €</p>
@@ -9,13 +9,26 @@
 			<button class="produit__action__buy">Ajouter au panier</button>
 			<button class="produit__action__see">Voir le produit</button>
 		</nav>
-	</a>
+	</router-link>
 </template>
 
 <script>
 export default {
 	name:"boulangerie-produit",
-	props:["name","img","price"]
+	props:{
+		name:{
+			type:String,
+			required:true
+		},
+		img:{
+			type:String,
+			required:true
+		},
+		price:{
+			type:Number,
+			required:true
+		}
+	}
 }
 </script>
 
