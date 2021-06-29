@@ -8,9 +8,22 @@ button {
 	cursor:pointer;
 	transition: background .5s, color .5s;
 	margin:2px;
+	box-sizing: border-box;
 
 	&:hover {
 		background:white;
 		color:red;
 	}
+
+	
+}
+
+.returnButton {
+	margin-left: clamp(25px,25vw,300px);
+	width:max-content;
+}
+
+section {
+	margin-left: clamp(25px,25vw,300px);
+	margin-right: clamp(25px,25vw,300px);
 }

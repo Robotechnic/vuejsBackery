@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import localStoragePlugin from './localStoragePlugin'
 
 export default createStore({
 	state: {
@@ -43,11 +44,7 @@ export default createStore({
 	},
 	getters:{
 		totalItems(state){
-			let total = 0
-			state.produits.forEach(element => {
-				total += element.quantity	
-			})
-			return total
+			return state.produits.filter(element => element.quantity > 0).length
 		},
 		totalPrice(state){
 			let total = 0
@@ -67,8 +64,10 @@ export default createStore({
 		}
 	},
 	mutations: {
-		ADD_ITEM(state, itemName){
-			state.produits.find((element) => element.name == itemName).quantity += 1
+		ADD_ITEM(state, itemInfo ){
+			let itemName = itemInfo.name
+			let quantity = itemInfo.quantity ?? 1
+			state.produits.find((element) => element.name == itemName).quantity += quantity
 		},
 		REMOVE_ITEM(state, itemName){
 			state.produits.find((element) => element.name == itemName).quantity = 0
@@ -82,7 +81,7 @@ export default createStore({
 	actions: {
 		addItem(context,itemName){
 			if (context.state.produits.find((element) => element.name == itemName)){
-				context.commit("ADD_ITEM",itemName)
+				context.commit("ADD_ITEM",{name:itemName})
 			} else {
 				alert("Item doesn't exist")
 			}
@@ -94,8 +93,14 @@ export default createStore({
 			} else {
 				alert("Item doesn't exist")
 			}
+		},
+		updateQuantity(context,itemQuantity){
+			itemQuantity.forEach(quantity=>{
+				if (context.state.produits.find((element) => element.name == quantity.name)){
+					context.commit("ADD_ITEM", {name: quantity.name,quantity:quantity.quantity})
+				}
+			})
 		}
 	},
-	modules: {
-	}
+	plugins: [localStoragePlugin]
 })

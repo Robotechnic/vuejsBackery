@@ -1,4 +1,5 @@
 <template>
+	<BackButton/>
 	<section class="produitPresentation">
 		<img class="produitPresentation__img" :src="img"/>
 		<div class="produitPresentation__description">
@@ -17,8 +18,12 @@
 </template>
 
 <script>
+import BackButton from "../components/backButton.vue"
 export default {
 	name:"Details",
+	components:{
+		BackButton
+	},
 	data(){
 		return {
 			name:undefined,
@@ -38,9 +43,8 @@ export default {
 </script>
 
 <style lang="scss">
+
 .produitPresentation {
-	margin-left: clamp(25px,25vw,300px);
-	margin-right: clamp(25px,25vw,300px);
 	display:flex;
 	&__img {
 		width:300px;

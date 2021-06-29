@@ -18,7 +18,5 @@ export default {
 	.produitContener {
 		display:flex;
 		flex-wrap: wrap;
-		margin-left: clamp(25px,25vw,300px);
-		margin-right: clamp(25px,25vw,300px);
 	}
 </style>

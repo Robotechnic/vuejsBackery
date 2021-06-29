@@ -1,6 +1,7 @@
 <template>
+	<BackButton v-if="!cartEmpty"/>
 	<section class="cart">
-		<p class="cart__empty" v-if="$store.getters.totalItems == 0">
+		<p class="cart__empty" v-if="cartEmpty">
 			Your cart is curently empty.<br/>
 			<router-link to="/">Return to navigation.</router-link>
 		</p>
@@ -24,16 +25,22 @@
 				<button @click="checkout">Checkout</button>
 			</div>
 		</div>
-		
 	</section>
 </template> 
 
 <script>
 import ProduitInCart from "../components/produitInCart.vue"
+import BackButton from "../components/backButton.vue"
 export default {
 	name:"Cart",
 	components: {
-		ProduitInCart
+		ProduitInCart,
+		BackButton
+	},
+	computed:{
+		cartEmpty(){
+			return this.$store.getters.totalItems == 0
+		}
 	},
 	methods:{
 		checkout(){
@@ -47,8 +54,6 @@ export default {
 
 <style lang="scss">
 	.cart {
-		margin-left: clamp(25px,25vw,300px);
-		margin-right: clamp(25px,25vw,300px);
 		margin-top:10px;
 
 		&__empty {
@@ -62,6 +67,8 @@ export default {
 				border:solid black 1px;
 				border-radius:1em;
 				padding:10px;
+				margin:10px;
+				box-sizing: border-box;
 			}
 
 			&__items {
