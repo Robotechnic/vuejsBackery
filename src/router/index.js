@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/index.vue'
+import store from "../store/index.js"
 
 const routes = [
 	{
@@ -13,9 +14,23 @@ const routes = [
 		component: () => import('../views/cart.vue')
 	},
 	{
+		path: "/404",
+		name: "404",
+		component: () => import("../views/404.vue")
+	},
+	{
 		path: '/:productName',
 		name: 'Details',
-		component: () => import('../views/details.vue')
+		component: () => import('../views/details.vue'),
+		beforeEnter(to, from, next){
+			let item = store.getters.itemFromName(to.params.productName)
+			if (item){
+				to.params.item = item
+				next()
+			} else {
+				next("/404")
+			}
+		}
 	}
 ]
 

@@ -1,0 +1,16 @@
+button {
+	background-color: red;
+	color:white;
+	align-self: flex-end;
+	border-radius: 1em;
+	width:100%;
+	border:solid 1px red;
+	cursor:pointer;
+	transition: background .5s, color .5s;
+	margin:2px;
+
+	&:hover {
+		background:white;
+		color:red;
+	}
+}

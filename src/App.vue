@@ -1,8 +1,13 @@
 <template>
 	<header>
-		<h1>La boulangerie Vue js</h1>
-		
-		<img src="@/assets/cart.png"/>
+		<div class="spacer">&nbsp;</div>
+		<router-link to="/" class="mainTitle"><h1>La boulangerie Vue js</h1></router-link>
+		<nav class="cartDisplay">
+			<p class="cartDisplay__itemCount">{{$store.getters.totalItems}}</p>
+			<router-link to="/cart">
+				<img class="cartDisplay__icon" src="@/assets/cart.png"/>
+			</router-link>
+		</nav>
 	</header>
 
 	<router-view/>
@@ -12,62 +17,57 @@
 <script>
 
 export default {
-	name: 'App',
-	components: {
-		
-	},
-	data() {return {
-			produits : [
-				{
-					name:"pain",
-					img:require("@/assets/pain.png"),
-					price:3,
-					quantity:0
-				},
-				{
-					name:"croissant",
-					img:require("@/assets/croissant.png"),
-					price:1.5,
-					quantity:0
-				},
-				{
-					name:"brioche",
-					img:require("@/assets/brioche.png"),
-					price:5,
-					quantity:0
-				},
-				{
-					name:"chocolatine",
-					img:require("@/assets/chocolatine.png"),
-					price:2,
-					quantity:0
-				},
-				{
-					name:"pain-aux-raisin",
-					img:require("@/assets/pain-aux-raisins.png"),
-					price:2,
-					quantity:0
-				}
-			]
-		}
-	}
-
+	name: "App"
 }
 </script>
 
 <style lang="scss">
+$cartCountSize:20px;
+
 body {
 	margin:0;
 	border:0;
 	padding:0;
 }
-#app {
 
-	header {
-		background:rgb(48, 44, 44);
+header {
+	background:rgb(48, 44, 44);
+	color:white;
+	padding:10px;
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+
+	.mainTitle {
+		text-decoration: none;
 		color:white;
-		display:flex;
-		padding:10px;
+		transition: color .5s;
+
+		&:hover {
+			color:rgb(196, 196, 196);
+		}
+	}
+
+	.spacer {
+		width:50px;
+	}
+	.cartDisplay {
+		&__icon {
+			width:50px;
+		}
+
+		&__itemCount {
+			margin:0;
+			width:$cartCountSize;
+			height:$cartCountSize;
+			border-radius: 1em;
+			background:red;
+			text-align:center;
+
+			position: relative;
+			margin-bottom: -$cartCountSize;
+			right:-30px;
+		}
 	}
 }
 </style>

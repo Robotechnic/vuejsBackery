@@ -1,13 +1,13 @@
 <template>
-	<router-link class="produit" :href="'/'+name">
+	<router-link class="produit" :to="'/'+name">
 		<div class="produit__header">
 			<h2 class="produit__header__name">{{name}}</h2>
 			<p class="produit__header__price">{{price}} €</p>
 		</div>
 		<img class="produit__image" :src="img" :alt="'icon of '+name"/>
 		<nav class="produit__action">
-			<button class="produit__action__buy">Ajouter au panier</button>
-			<button class="produit__action__see">Voir le produit</button>
+			<button class="produit__action__buy" @click.prevent="$store.dispatch('addItem',name)">Add to cart</button>
+			<button class="produit__action__see">See product</button>
 		</nav>
 	</router-link>
 </template>
@@ -33,7 +33,6 @@ export default {
 </script>
 
 <style lang="scss">
-	$actionCover:100%;
 
 	.produit {
 		max-width: 200px;
@@ -72,22 +71,6 @@ export default {
 			display: block;
 			margin-top:auto;
 			cursor:default;
-			button {
-				background-color: red;
-				color:white;
-				align-self: flex-end;
-				border-radius: 1em;
-				width:100%;
-				border:solid 1px red;
-				cursor:pointer;
-				transition: background .5s, color .5s;
-				margin:2px;
-
-				&:hover {
-					background:white;
-					color:red;
-				}
-			}
 		}
 	}
 </style>
