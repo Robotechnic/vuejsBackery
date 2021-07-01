@@ -12,7 +12,9 @@
 				<label :for="computedInputId">Quantity : </label>
 				<input type="number" min="0" v-model="quantityModel" :id="computedInputId">
 				<label :for="computedInputId">Total : {{product.price*quantity}} €</label>
-				<button class="cartItem__description__action__delete" @click="$store.dispatch('removeItem',product.name)">
+				<button class="cartItem__description__action__delete" 
+						@click="$store.dispatch('removeItem',product.name)"
+						v-if="removable">
 					<img src="@/assets/delete.png">
 				</button>
 			</div>
@@ -35,6 +37,10 @@ export default {
 		inputId:{
 			type:Number,
 			required:true
+		},
+		removable:{
+			type:Boolean,
+			default:true
 		}
 	},
 	computed:{
