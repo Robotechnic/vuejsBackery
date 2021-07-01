@@ -1,5 +1,4 @@
 <template>
-
 	<section class="produitContener">
 		<Produit v-for="(produit,index) in $store.state.produits" 
 				:key="index" 

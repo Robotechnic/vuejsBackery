@@ -6,7 +6,7 @@
 		</div>
 		<img class="produit__image" :src="product.img" :alt="'icon of '+product.name"/>
 		<nav class="produit__action">
-			<button class="produit__action__buy" @click.prevent="$store.dispatch('addItem',product.name)">Add to cart</button>
+			<button class="produit__action__buy" @click.prevent="this.$emit('')">Add to cart</button>
 			<button class="produit__action__see">See product</button>
 		</nav>
 	</router-link>
@@ -26,7 +26,6 @@ export default {
 
 
 <style lang="scss">
-
 	.produit {
 		min-width: 250px;
 		border-radius: 1em;
