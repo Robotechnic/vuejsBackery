@@ -1,9 +1,10 @@
+$sectionMargin: clamp(10px,5vw,300px);
+
 button {
 	background-color: red;
 	color:white;
 	align-self: flex-end;
 	border-radius: 1em;
-	width:100%;
 	border:solid 1px red;
 	cursor:pointer;
 	transition: background .5s, color .5s;
@@ -15,15 +16,24 @@ button {
 		color:red;
 	}
 
-	
-}
+	&.cancelButton {
+		background-color: gray;
+		border:solid 1px gray;
 
-.returnButton {
-	margin-left: clamp(25px,25vw,300px);
-	width:max-content;
+		&:hover {
+			background:white;
+			color:gray;
+		}
+	}
+
+	&.backButton {
+		margin-left: $sectionMargin;
+		width:max-content;
+	}
 }
 
 section {
-	margin-left: clamp(25px,25vw,300px);
-	margin-right: clamp(25px,25vw,300px);
+	margin-left: $sectionMargin;
+	margin-right: $sectionMargin;
+	justify-content: center;
 }

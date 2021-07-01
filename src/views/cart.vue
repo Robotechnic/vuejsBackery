@@ -15,13 +15,16 @@
 								:price="item.price"
 								:inputId="index"
 								v-model:quantity="$store.getters.itemsInCart[index].quantity"/>
-				<button class="cart__clearButton" @click="this.$store.commit('CLEAR_CART')">Clear cart</button>
+				<Modal ref="clearModal" @validated="$store.commit('CLEAR_CART')" title="Clear cart">
+					<p>Do you realy want to clear cart?</p>
+				</Modal>
+				<button class="cart__content__items__clear" @click="$refs.clearModal.show">Clear cart</button>
 			</div>
 			<div class="cart__content__total">
 				<h2>Summary:</h2>
 				<p>Price: {{$store.getters.totalPrice}} €</p>
 				<p>TVA: {{$store.state.tva*100}}%</p>
-				<p>Total: {{$store.getters.priceWithTVA}} €</p>
+				<p><strong>Total: {{$store.getters.priceWithTVA}} €</strong></p>
 				<button @click="checkout">Checkout</button>
 			</div>
 		</div>
@@ -31,11 +34,13 @@
 <script>
 import ProduitInCart from "../components/produitInCart.vue"
 import BackButton from "../components/backButton.vue"
+import Modal from "../components/modal.vue"
 export default {
 	name:"Cart",
 	components: {
 		ProduitInCart,
-		BackButton
+		BackButton,
+		Modal
 	},
 	computed:{
 		cartEmpty(){
@@ -67,12 +72,19 @@ export default {
 				border:solid black 1px;
 				border-radius:1em;
 				padding:10px;
-				margin:10px;
+				margin-left:10px;
+				margin-bottom:0;
+				margin-top:0;
 				box-sizing: border-box;
 			}
 
 			&__items {
 				flex-grow: 1;
+
+				&__clear {
+					margin-top:10px;
+					width:100%;
+				}
 			}
 		}
 	}

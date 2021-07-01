@@ -10,9 +10,13 @@
 			<p class="produitPresentation__description__text">
 				{{description}}
 			</p>
-			<button @click="$store.dispatch('addItem',name)">
-				Add to cart
-			</button>
+			<div class="produitPresentation__description__cartAdding">
+				<label for="itemQuantity">Quantity :</label>
+				<input type="number" id="itemQuantity" v-model="itemQuantity">
+				<button @click="$store.dispatch('addItem',{name:name,quantity:itemQuantity})">
+					Add to cart
+				</button>
+			</div>
 		</div>
 	</section>
 </template>
@@ -29,7 +33,8 @@ export default {
 			name:undefined,
 			price:0,
 			img:undefined,
-			description:undefined
+			description:undefined,
+			itemQuantity:1
 		}
 	},
 	beforeMount(){
@@ -60,6 +65,17 @@ export default {
 			}
 			p{
 				font-weight: bold;
+			}
+		}
+
+		&__cartAdding {
+			display:grid;
+			grid-template-areas: "label input"
+								"button button";
+			align-items:center;
+
+			button {
+				grid-area: button;
 			}
 		}
 	}

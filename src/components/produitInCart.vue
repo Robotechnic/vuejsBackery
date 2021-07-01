@@ -65,9 +65,12 @@ export default {
 <style lang="scss">
 	.cartItem {
 		display:flex;
+		margin:20px;
+		
 		&__icon {
-			height:3em;
+			height:4em;
 		}
+
 		&__description {
 			width:100%;
 			&__header {

@@ -1,7 +1,7 @@
 <template>
 	<header>
 		<div class="spacer">&nbsp;</div>
-		<router-link to="/" class="mainTitle"><h1>La boulangerie Vue js</h1></router-link>
+		<router-link to="/" class="mainTitle"><h1>Vue js bakery</h1></router-link>
 		<nav class="cartDisplay">
 			<p class="cartDisplay__itemCount">{{$store.getters.totalItems}}</p>
 			<router-link to="/cart">

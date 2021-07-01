@@ -32,10 +32,11 @@ export default {
 }
 </script>
 
+
 <style lang="scss">
 
 	.produit {
-		max-width: 200px;
+		min-width: 250px;
 		border-radius: 1em;
 		border:solid rgb(187, 187, 187) 1px;
 		padding:10px;
@@ -63,7 +64,7 @@ export default {
 		}
 
 		&__image {
-			max-width: 200px;
+			max-width: 100%;
 		}
 
 		&__action {
@@ -71,6 +72,10 @@ export default {
 			display: block;
 			margin-top:auto;
 			cursor:default;
+
+			button {
+				width:100%;
+			}
 		}
 	}
 </style>

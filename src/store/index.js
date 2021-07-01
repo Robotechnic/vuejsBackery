@@ -79,9 +79,11 @@ export default createStore({
 		}
 	},
 	actions: {
-		addItem(context,itemName){
+		addItem(context,item){
+			let itemName = item.name ?? item
+			let quantity = item.quantity ?? 1
 			if (context.state.produits.find((element) => element.name == itemName)){
-				context.commit("ADD_ITEM",{name:itemName})
+				context.commit("ADD_ITEM", { name: itemName, quantity: parseInt(quantity) })
 			} else {
 				alert("Item doesn't exist")
 			}

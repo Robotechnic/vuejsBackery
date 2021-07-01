@@ -1,5 +1,5 @@
 <template>
-	<button @click="$router.push('/')" class="returnButton">
+	<button @click="$router.push('/')" class="backButton">
 		&larr; Back
 	</button>
 </template>
