@@ -3,20 +3,16 @@
 	<section class="produitContener">
 		<Produit v-for="(produit,index) in $store.state.produits" 
 				:key="index" 
-				:name="produit.name" 
-				:img="produit.img" 
-				:price="produit.price"/>
+				:product="produit"/>
 	</section>
 </template>
 
 <script>
 import Produit from "../components/produit.vue"
-//import Modal from "../components/modal.vue"
 export default {
 	name: 'App',
 	components: {
-		Produit,
-		//Modal
+		Produit
 	}
 }
 </script>

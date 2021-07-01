@@ -1,12 +1,12 @@
 <template>
-	<router-link class="produit" :to="'/'+name">
+	<router-link class="produit" :to="'/'+product.name">
 		<div class="produit__header">
-			<h2 class="produit__header__name">{{name}}</h2>
-			<p class="produit__header__price">{{price}} €</p>
+			<h2 class="produit__header__name">{{product.name}}</h2>
+			<p class="produit__header__price">{{product.price}} €</p>
 		</div>
-		<img class="produit__image" :src="img" :alt="'icon of '+name"/>
+		<img class="produit__image" :src="product.img" :alt="'icon of '+product.name"/>
 		<nav class="produit__action">
-			<button class="produit__action__buy" @click.prevent="$store.dispatch('addItem',name)">Add to cart</button>
+			<button class="produit__action__buy" @click.prevent="$store.dispatch('addItem',product.name)">Add to cart</button>
 			<button class="produit__action__see">See product</button>
 		</nav>
 	</router-link>
@@ -16,16 +16,8 @@
 export default {
 	name:"boulangerie-produit",
 	props:{
-		name:{
-			type:String,
-			required:true
-		},
-		img:{
-			type:String,
-			required:true
-		},
-		price:{
-			type:Number,
+		product:{
+			type:Object,
 			required:true
 		}
 	}
@@ -64,7 +56,7 @@ export default {
 		}
 
 		&__image {
-			max-width: 100%;
+			max-width: 235px;
 		}
 
 		&__action {

@@ -1,18 +1,18 @@
 <template>
 	<div class="cartItem">
-		<img :src="img" class="cartItem__icon">
+		<img :src="product.img" class="cartItem__icon">
 		<div class="cartItem__description">
 			<div class="cartItem__description__header">
-				<router-link :to="'/'+name" class="cartItem__description__header__title">
-					<h3>{{name}}</h3>
+				<router-link :to="'/'+product.name" class="cartItem__description__header__title">
+					<h3>{{product.name}}</h3>
 				</router-link>
-				<p class="cartItem__description__header__price">{{price}}€</p>
+				<p class="cartItem__description__header__price">{{product.price}}€</p>
 			</div>
 			<div class="cartItem__description__action">
 				<label :for="computedInputId">Quantity : </label>
 				<input type="number" min="0" v-model="quantityModel" :id="computedInputId">
-				<label :for="computedInputId">Total : {{price*quantity}} €</label>
-				<button class="cartItem__description__action__delete" @click="$store.dispatch('removeItem',name)">
+				<label :for="computedInputId">Total : {{product.price*quantity}} €</label>
+				<button class="cartItem__description__action__delete" @click="$store.dispatch('removeItem',product.name)">
 					<img src="@/assets/delete.png">
 				</button>
 			</div>
@@ -24,17 +24,9 @@
 export default {
 	name:"produitInCart",
 	props:{
-		name:{
-			type:String,
-			required:true
-		},
-		img:{
-			type:String,
-			required:true
-		},
-		price:{
-			type:Number,
-			required:true
+		product:{
+			type:Object,
+			require:true
 		},
 		quantity:{
 			type:Number,

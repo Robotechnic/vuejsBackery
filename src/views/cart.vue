@@ -10,9 +10,7 @@
 				<h2 class="cart__content__items__title">Cart ({{$store.getters.totalItems}})</h2>
 				<ProduitInCart v-for="(item,index) in $store.getters.itemsInCart" 
 								:key="index" 
-								:name="item.name" 
-								:img="item.img" 
-								:price="item.price"
+								:product="item"
 								:inputId="index"
 								v-model:quantity="$store.getters.itemsInCart[index].quantity"/>
 				<Modal ref="clearModal" @validated="$store.commit('CLEAR_CART')" title="Clear cart">
@@ -76,10 +74,17 @@ export default {
 				margin-bottom:0;
 				margin-top:0;
 				box-sizing: border-box;
+				height: max-content;
+				position:sticky;
+				top:5px;
 			}
 
 			&__items {
 				flex-grow: 1;
+
+				&__title {
+					margin-top:0px;
+				}
 
 				&__clear {
 					margin-top:10px;

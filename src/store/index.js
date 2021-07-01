@@ -39,7 +39,21 @@ export default createStore({
 				description: "A chocolatine with grape.",
 				price: 2,
 				quantity: 0
-			}
+			},
+			{
+				name: "Chocolate Twist",
+				img: require("@/assets/chocolateTwist.png"),
+				description: "A great viennoiserie with chocolate and cream thaw will twist your day.",
+				price: 2.5,
+				quantity: 0
+			},
+			{
+				name: "Apple Turnover",
+				img: require("@/assets/appleTurnover.png"),
+				description: "Puff pastry with an apple heart, what else?",
+				price: 2.5,
+				quantity: 0
+			},
 		]
 	},
 	getters:{
