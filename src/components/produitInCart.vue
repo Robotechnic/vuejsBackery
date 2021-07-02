@@ -9,9 +9,11 @@
 				<p class="cartItem__description__header__price">{{product.price}}€</p>
 			</div>
 			<div class="cartItem__description__action">
-				<label :for="computedInputId">Quantity : </label>
-				<input type="number" min="0" v-model="quantityModel" :id="computedInputId">
-				<label :for="computedInputId">Total : {{product.price*quantity}} €</label>
+				<div class="cartItem__description__action__quantity">
+					<label :for="computedInputId">Quantity : </label>
+					<input type="number" min="0" v-model="quantityModel" :id="computedInputId">
+					<label :for="computedInputId">Total : {{product.price*quantity}} €</label>
+				</div>
 				<button class="cartItem__description__action__delete" 
 						@click="$store.dispatch('removeItem',product.name)"
 						v-if="removable">
@@ -49,7 +51,8 @@ export default {
 				return this.quantity
 			},
 			set(value){
-				this.$emit('update:quantity', parseInt(value))
+				if (value != "")
+					this.$emit('update:quantity', parseInt(value))
 			}
 		},
 
@@ -63,6 +66,7 @@ export default {
 <style lang="scss">
 	.cartItem {
 		display:flex;
+		align-items: center;
 		margin:20px;
 		
 		&__icon {
@@ -97,6 +101,11 @@ export default {
 				*{
 					margin-left:2px;
 					margin-right:2px;
+				}
+
+				&__quantity {
+					display:flex;
+					flex-wrap: wrap;
 				}
 
 				&__delete {

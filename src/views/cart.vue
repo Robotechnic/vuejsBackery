@@ -65,18 +65,30 @@ export default {
 		}
 		&__content {
 			display:flex;
+			flex-direction: column;
+
+			@media screen and (min-width:550px) {
+				flex-direction: row;
+			}
 
 			&__total {
 				border:solid black 1px;
 				border-radius:1em;
 				padding:10px;
-				margin-left:10px;
-				margin-bottom:0;
-				margin-top:0;
-				box-sizing: border-box;
-				height: max-content;
-				position:sticky;
-				top:5px;
+
+				@media screen and (min-width:550px) {
+					margin-left:10px;
+					margin-bottom:0;
+					margin-top:0;
+					box-sizing: border-box;
+					height: max-content;
+					position:sticky;
+					top:5px;
+				}
+
+				button {
+					width:100%;
+				}
 			}
 
 			&__items {
