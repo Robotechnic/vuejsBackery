@@ -46,7 +46,8 @@ export default {
 
 <style lang="scss">
 	.produitContener {
-		display:flex;
-		flex-wrap: wrap;
+		display:grid;
+		gap:10px;
+		grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
 	}
 </style>

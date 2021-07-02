@@ -28,10 +28,11 @@ export default {
 <style lang="scss">
 	.produit {
 		min-width: 250px;
+		max-width:350px;
+		box-sizing: border-box;
 		border-radius: 1em;
 		border:solid rgb(187, 187, 187) 1px;
 		padding:10px;
-		margin:10px;
 		text-decoration: none;
 		color:black;
 		display:flex;
